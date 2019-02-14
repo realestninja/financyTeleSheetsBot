@@ -4,3 +4,4 @@
 credentials
 node_modules
 token.json
+*.tar.gz
