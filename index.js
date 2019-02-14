@@ -13,13 +13,17 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 // time.
 const TOKEN_PATH = 'token.json';
 
-// Load client secrets from a local file.
-fs.readFile('credentials/googleCredentials.json', (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
-  // Authorize a client with credentials, then call the Google Sheets API.
-	// authorize(JSON.parse(content), listMajors);
-	authorize(JSON.parse(content), appendData);
-});
+let requestBody = '';
+
+function callSheets() {
+	// Load client secrets from a local file.
+	fs.readFile('credentials/googleCredentials.json', (err, content) => {
+		if (err) return console.log('Error loading client secret file:', err);
+		// Authorize a client with credentials, then call the Google Sheets API.
+		// authorize(JSON.parse(content), listMajors);
+		authorize(JSON.parse(content), appendData);
+	});
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -108,7 +112,8 @@ function appendData(auth) {
     range: 'Sheet1!A2:B', //Change Sheet1 if your worksheet's name is something else
     valueInputOption: "USER_ENTERED",
     resource: {
-      values: [ ["Void", "Canvas", "Website"], ["Paul", "Shan", "Human"] ]
+      // values: [ ["Void", "Canvas", "Website"], ["Paul", "Shan", "Human"] ]
+			values: [ requestBody ]
     }
   }, (err, response) => {
     if (err) {
@@ -133,11 +138,13 @@ bot.onText(/\/a/, (msg) => {
 	const parts = msg.text.split(' ');
 	parts.shift(); //get rid off /a
 
-	const requestBody = parts.splice(0, 2);
+	requestBody = parts.splice(0, 2);
 
 	const itemName = parts.join(' ');
 	requestBody.push(itemName);
 	console.log(requestBody);
+
+	callSheets();
 
 	bot.sendMessage(chatId, "Got it!");
 });
