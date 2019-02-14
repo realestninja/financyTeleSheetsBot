@@ -1,7 +1,10 @@
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
+
 const spreadsheetId = JSON.parse(fs.readFileSync('./credentials/spreadsheetId.json')).spreadsheetId;
+// const range = "Sheet1!A1:B";
+const range = "Feb 19";
 
 const token = JSON.parse(fs.readFileSync('./credentials/botToken.json')).token;
 const ownerID = JSON.parse(fs.readFileSync('./credentials/botToken.json')).ownerID;
@@ -84,7 +87,7 @@ function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
 		spreadsheetId: spreadsheetId,
-		range: 'Sheet1!A1:B',
+		range: range,
 		// spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
 		// range: 'Class Data!A2:E',
   }, (err, res) => {
@@ -109,7 +112,8 @@ function appendData(auth) {
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: spreadsheetId,
-    range: 'Sheet1!A2:B', //Change Sheet1 if your worksheet's name is something else
+    // range: 'Sheet1!A2:B', //Change Sheet1 if your worksheet's name is something else
+		range: range,
     valueInputOption: "USER_ENTERED",
     resource: {
       // values: [ ["Void", "Canvas", "Website"], ["Paul", "Shan", "Human"] ]
