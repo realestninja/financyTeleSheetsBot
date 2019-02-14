@@ -1,0 +1,6 @@
+*.swp
+*.swo
+
+credentials
+node_modules
+token.json
