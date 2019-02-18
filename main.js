@@ -1,7 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 const { botToken, ownerID } = require('./credentials/botToken');
-const { callSheets } = require('./api');
+const { callSheets } = require('./sheetsApi');
 
 const bot = new TelegramBot(botToken, {polling: true});
 
