@@ -1,7 +1,8 @@
 *.swp
 *.swo
 
-credentials
+credentials/*.js
+credentials/*.json
 node_modules
 token.json
 *.tar.gz
