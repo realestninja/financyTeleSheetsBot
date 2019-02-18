@@ -1,13 +1,9 @@
 const fs = require('fs');
 const readline = require('readline');
-const {google} = require('googleapis');
+const { google } = require('googleapis');
 
-const spreadsheetId = JSON.parse(fs.readFileSync('./credentials/spreadsheetId.json')).spreadsheetId;
-// const range = "Sheet1!A1:B";
-const range = "Feb 19";
-
-const token = JSON.parse(fs.readFileSync('./credentials/botToken.json')).token;
-const ownerID = JSON.parse(fs.readFileSync('./credentials/botToken.json')).ownerID;
+const { botToken, ownerID } = require('./credentials/botToken');
+const { spreadsheetId, range} = require('./credentials/spreadsheet');
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
@@ -131,7 +127,7 @@ function appendData(auth) {
 
 const TelegramBot = require('node-telegram-bot-api');
 
-const bot = new TelegramBot(token, {polling: true});
+const bot = new TelegramBot(botToken, {polling: true});
 
 console.log('Bot running.');
 
