@@ -9,8 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "googleapis": "^37.1.0",
     "fs": "0.0.1-security",
-    "node-telegram-bot-api": "^0.30.0"
+    "googleapis": "^37.1.0",
+    "node-telegram-bot-api": "^0.30.0",
+    "process": "^0.11.10"
   }
 }

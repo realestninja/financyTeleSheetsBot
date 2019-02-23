@@ -1,11 +1,12 @@
 const TelegramBot = require('node-telegram-bot-api');
+const process  = require('process');
 
 const { botToken, ownerID } = require('./credentials/botToken');
 const { callSheets } = require('./sheetsApi');
 
 const bot = new TelegramBot(botToken, {polling: true});
 
-console.log('Bot running.');
+console.log('Bot running - pid:', process.pid);
 
 bot.onText(/\/a/, (msg) => {
 	const chatId = msg.chat.id;
