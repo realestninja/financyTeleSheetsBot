@@ -15,10 +15,11 @@ bot.onText(/\/a/, (msg) => {
 	const parts = msg.text.split(' ');
 	parts.shift(); //get rid off /a
 
-	requestBody = parts.splice(0, 2);
+	requestBody = parts.splice(0, 2); //Type and Price
 
-	const itemName = parts.join(' ');
+	const itemName = parts.join(' '); //Remains become one string
 	requestBody.push(itemName);
+	//requestBody consists of type, price and optional string
 
 	callSheets(requestBody);
 
