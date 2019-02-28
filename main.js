@@ -8,6 +8,8 @@ const { callSheets } = require('./sheetsApi');
 const bot = new TelegramBot(botToken, {polling: true});
 
 console.log('Bot running - pid:', process.pid);
+bot.sendMessage(ownerID, "Good morning. I'm awake.");
+
 fs.writeFile('./latest.pid', process.pid, (err) => {
 	if(err) throw err;
 });
