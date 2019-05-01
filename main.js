@@ -25,7 +25,12 @@ bot.onText(/\/a/, (msg) => {
 
 	const itemName = parts.join(' '); //Remains become one string
 	requestBody.push(itemName);
-	//requestBody consists of type, price and optional string
+
+	const today = new Date();
+	const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+	requestBody.push(date);
+
+	//requestBody consists of type, price and optional string and also date
 
 	callSheets(requestBody);
 
