@@ -10,7 +10,7 @@ const bot = new TelegramBot(botToken, {polling: true});
 console.log('Bot running - pid:', process.pid);
 bot.sendMessage(ownerID, "Good morning. I'm awake.");
 
-fs.writeFile('./latest.pid', process.pid, (err) => {
+fs.writeFile('./latest.pid', `${process.pid}\n`, (err) => {
 	if(err) throw err;
 });
 
