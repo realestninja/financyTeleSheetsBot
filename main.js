@@ -27,7 +27,7 @@ bot.onText(/\/a/, (msg) => {
 	requestBody.push(itemName);
 
 	const today = new Date();
-	const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+	const date = today.getDate()+'.'+(today.getMonth()+1)+'.'+today.getFullYear();
 	requestBody.push(date);
 
 	//requestBody consists of type, price and optional string and also date
